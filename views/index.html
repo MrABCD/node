@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"> 
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport"> 
+	<meta content="yes" name="apple-mobile-web-app-capable"> 
+	<meta content="black" name="apple-mobile-web-app-status-bar-style"> 
+	<meta content="telephone=no" name="format-detection"> 
+	<meta content="email=no" name="format-detection">
+	<title>test</title>
+	<script type="text/javascript" src="/js/dep/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="/js/dep/echarts.js"></script>
+	<script type="text/javascript" src="/js/util/browser.js"></script>
+	<style type="text/css">
+		#chartmain{
+			
+		}
+	</style>
+</head>
+<body>
+	<a href=""></a>
+	<div id="show"></div>
+	<div id="status"></div>
+	<div id="chartmain" >
+		
+	</div>
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+
+
+			var myChart = echarts.init(document.getElementById("chartmain"));
+
+
+			option = {
+			    legend: {
+			        data:['高度(km)与气温(°C)变化关系']
+			    },
+			    tooltip: {
+			        trigger: 'axis',
+			        formatter: "Temperature : <br/>{b}km : {c}°C"
+			    },
+			    grid: {
+			        left: '3%',
+			        right: '4%',
+			        bottom: '3%',
+			        containLabel: true
+			    },
+			    xAxis: {
+			        type: 'value',
+			        axisLabel: {
+			            formatter: '{value} °C'
+			        }
+			    },
+			    yAxis: {
+			        type: 'category',
+			        axisLine: {onZero: false},
+			        axisLabel: {
+			            formatter: '{value} km'
+			        },
+			        boundaryGap: false,
+			        data:[]
+			    },
+			    series: [
+			        {
+			            name: '高度(km)与气温(°C)变化关系',
+			            type: 'line',
+			            smooth: true,
+			            lineStyle: {
+			                normal: {
+			                    width: 8,
+			                    shadowColor: 'rgba(0,0,0,0.4)',
+			                    shadowBlur: 10,
+			                    shadowOffsetY: 10
+			                }
+			            },
+			            data:[]
+			        }
+			    ]
+			};
+
+			myChart.setOption(option);
+
+			$.getJSON("/result",function(data){
+				myChart.setOption({
+					yAxis:{
+						data:data.category
+					},
+					series:[{
+			            	name:"高度(km)与气温(°C)变化关系",
+			            	data:data.data
+			            }]
+				});
+			});
+
+
+			if (browser.versions.mobile) {
+		        window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", hengshuping, false);
+
+		        $("#chartmain").height($(window).height()-20);
+			    $("#chartmain").width("100%");
+		        myChart.resize();
+
+			    }else {
+			        $("#chartmain").height("500px");
+			        $("#chartmain").width("700px");
+			    }
+
+
+
+			function hengshuping(){
+
+				console.log("resize");
+
+			    if(window.orientation==180||window.orientation==0){
+			        $("#chartmain").height($(window).height()-20);
+			        $("#chartmain").width("100%");
+			        myChart.resize();
+			       
+			    }
+			    if(window.orientation==90||window.orientation==-90){
+			        $("#chartmain").height($(window).height()-20);
+			        $("#chartmain").width("100%");  
+			        myChart.resize();
+
+
+			    }
+
+
+			}
+
+// console.log(window.screen.height,"window.screen.height");
+// console.log(window.screen.width,"window.screen.width");
+// console.log(window.screen.availHeight,"window.screen.availHeight");
+
+// console.log(window.screen.availWidth,"window.screen.availWidth");
+// console.log(browser.versions.mobile,"browser.versions.mobile");
+// console.log(window.orientation,"window.orientation");
+// console.log(window.screen.availHeight*0.6,"window.screen.availHeight*0.9");
+// console.log(window.screen.availWidth * 0.95,"window.screen.availWidth * 0.95");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		/*ready函数结束位置*/
+		});
+
+
+			
+
+
+
+	</script>
+</body>
+</html>

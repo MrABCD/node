@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width,initial-scale=1.0" name="viewport">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			
+			color: white;
+			font-family:"Microsoft YaHei";
+		}
+		body{
+			background-color: rgba(39,41,45,1);
+			font-size: 14px;
+			
+		}
+		.tabContainer{
+			font-size: 110%;
+		}
+		.tabNav{
+			border-top: 1px solid rgba(114,114,114,1);
+			border-bottom: 1px solid rgba(114,114,114,1);
+		}
+		.tabNav::after{
+			content: "";
+			clear: both;
+			display: block;
+		}
+		.tabNavLi{
+			list-style: none;
+			float: left;
+			width: 25%;
+			text-align: center;
+			line-height: 40px;
+			color: rgba(131,131,131,1);
+		}
+		.tabContent{
+			display: none;
+		}
+		#tab1{
+			display: block;
+
+		}
+		#tabNavLi1{
+			color: white;
+			border-bottom: 2px solid rgba(105,151,177,1);
+		}
+		.protocol,
+		.attention,
+		.protocolContent{
+			color: rgba(131,131,131,1);
+			padding-left: 2em;
+		}
+		.protocol{
+			padding-top: 1.5em;
+		}
+		.protocolContent{
+			padding-right: 2em;
+			padding-top: 2em;
+		}
+		.teamTitle{
+			padding-top: 1.5em;
+			padding-bottom:1.5em;
+			padding-left: 0.8em;
+		}
+		.person{
+			background-color: rgba(60,65,78,0.9);
+			border-radius: 0.5em;
+			padding:1em;
+			margin-left: 0.8em;
+			margin: 0.8em;
+		}
+		.person::after{
+			content: "";
+			clear: both;
+			display: block;
+		}
+		.avatar {
+		    float: left;
+		    width: 5em;
+		    height: 6em;
+		    overflow: hidden;
+		    margin-top: 0.5em;
+		}
+		.introduction{
+			float: right;
+			width: 14em;
+		}
+		.person:nth-child(even) .avatar {
+		    float: left;
+
+		}
+		.person:nth-child(even) .introduction{
+			float: right;
+
+		}
+		.person:nth-child(odd) .avatar {
+		    float: right;
+
+		}
+		.person:nth-child(odd) .introduction{
+			float: left;
+
+		}
+
+		.avatarImg{
+			width: 100%;
+		}
+		.name,
+		.postion{
+			display: inline-block;
+			margin-top: 0.5em;
+			margin-bottom: 1.5em;
+		}
+		.name{
+			padding-right: 2em;
+		}
+
+		@font-face {
+			font-family: "iconfont";
+		  	src: url('/font/iconfont.eot?t=1503840824915');
+		  	src: url('/font/iconfont.eot?t=1503840824915#iefix') format('embedded-opentype'),
+		  	url('/font/iconfont.woff?t=1503840824915') format('woff'),
+		  	url('/font/iconfont.ttf?t=1503840824915') format('truetype'),
+		  	url('/font/iconfont.svg?t=1503840824915#iconfont') format('svg');
+		}
+
+		.iconfont {
+		  font-family:"iconfont" !important;
+		  font-size:16px;
+		  font-style:normal;
+		  -webkit-font-smoothing: antialiased;
+		  -moz-osx-font-smoothing: grayscale;
+		}
+
+		.icon-tubiaozhexiantu:before { content: "\f0073"; }
+
+		.icon-huodong:before { content: "\e650"; }
+
+		.icon-caiwu:before { content: "\e60a"; }
+
+		.icon-women:before { content: "\e613"; }
+
+		
+		.footerLi{
+			display: inline-block;
+			width: 25%;
+			text-align: center;
+		}
+		.iconfont{
+			font-size: 2em;
+		}
+		.iconfont,
+		.footerText{
+			display: block;
+		}
+	</style>
+	<script type="text/javascript">
+		// (function init(){
+		// 	document.getElementById("tabNavLi1").style.borderBottom = "2px solid rgba(105,151,177,1)";
+		// })();
+
+		function tab(tabId){
+			var tabs = ["tab1","tab2","tab3","tab4"],
+				tabNavs = ["tabNavLi1","tabNavLi2","tabNavLi3","tabNavLi4"],i;
+			for(i = 0;i < 4;i++){
+				var tabContent = document.getElementById(tabs[i]),
+					tabNavLi = document.getElementById(tabNavs[i]);
+				if(tabId === tabs[i]){
+					tabContent.style.display = "block";
+					tabNavLi.style.color = "white";
+					tabNavLi.style.borderBottom = "2px solid rgba(105,151,177,1)";
+				}else{
+					tabContent.style.display = "none";
+					tabNavLi.style.color = "rgba(131,131,131,1)";
+					tabNavLi.style.borderBottom = "2px solid rgba(105,151,177,0)";
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="tabContainer">
+		<div class="tabNav">
+			<ul>
+				<li class="tabNavLi" onclick="tab('tab1')" id="tabNavLi1">骆驼码简介</li>
+				<li class="tabNavLi" onclick="tab('tab2')" id="tabNavLi2">用户协议</li>
+				<li class="tabNavLi" onclick="tab('tab3')" id="tabNavLi3">大数据团队</li>
+				<li class="tabNavLi" onclick="tab('tab4')" id="tabNavLi4">联系我们</li>
+			</ul>
+		</div>
+		<div class="tab">
+			<div id="tab1" class="tabContent">
+				<p>
+					骆驼码是一物一码智能促销大数据服务平台，该平台集防伪溯源、线下促销、线上活动、传播互动于一体，帮助快消企业实现“快速动销、防止截留、监控窜货、掌控终端”，并轻松连接移动互联网，实现手机端抽奖、兑奖及核销。
+				</p>
+			</div>
+			<div id="tab2" class="tabContent">
+				<p class="protocol">用户协议</p>
+				<p class="attention">特别提示</p>
+				<p class="protocolContent">
+					北京陌陌科技有限公司（以下简称“陌陌科技”）在此特别提醒您（用户）在注册成为用户之前，请认真阅读本《用户协议》（以下简称“协议”），确保您充分理解本协议中各条款。请您审慎阅读并选择接受或不接受本协议。除非您接受本协议所有条款，否则您无权注册、登录或使用本协议所涉服务。您的注册、登录、使用等行为将视为对本协议的接受，并同意接受本协议各项条款的约束。本协议约定陌陌科技与用户之间关于“陌陌”软件服务（以下简称“服务”）的权利义务。“用户”是指注册、登录、使用本服务的个人。本协议可由陌陌科技随时更新，更新后的协议条款一旦公布即代替原来的协议条款，恕不再另行通知，用户可在本网站查阅最新版协议条款。在陌陌科技修改协议条款后，如果用户不接受修改后的条款，请立即停止使用陌陌科技提供的服务，用户继续使用陌陌科技提供的服务将被视为接受修改后的协议。
+				</p>
+			</div>
+			<div id="tab3" class="tabContent">
+				<p class="teamTitle">骆驼码大数据团队介绍</p>
+				<div class="person">
+					<div class="avatar">
+						<img src="img/Aamir.jpg" class="avatarImg">
+					</div>
+					<div class="introduction">
+						<span class="name">阿米尔.汉</span>
+						<span class="position">资深数据分析师</span>
+						<span class="achievement">
+							1999年，阿米尔·汗在动作冒险电影《义无反顾》中出演一名印巴边阿米尔汗图片阿米尔汗图片《在这部电影中首次出演反派角色。
+						</span>
+					</div>
+				</div>
+				<div class="person">
+					<div class="avatar">
+						<img src="img/Audrey.jpg" class="avatarImg">
+					</div>
+					<div class="introduction">
+						<span class="name">奥黛丽.赫本</span>
+						<span class="position">产品经理</span>
+						<span class="achievement">
+							1999年，阿米尔·汗在动作冒险电影《义无反顾》中出演一名印巴边阿米尔汗图片阿米尔汗图片47大地》阿米尔在这部电影中首次出演反派角色。
+						</span>
+					</div>
+				</div>
+				<div class="person">
+					<div class="avatar">
+						<img src="img/Tom.jpg" class="avatarImg">
+					</div>
+					<div class="introduction">
+						<span class="name">汤姆.克鲁斯</span>
+						<span class="position">产品经理</span>
+						<span class="achievement">
+							1999年，阿米尔·汗在动作冒险电影《义无反顾》中出演一名印巴边阿米尔汗图片阿米尔汗图片947大地》阿米尔在这部电影中首次出演反派角色。
+						</span>
+					</div>
+				</div>
+				<script type="text/javascript">
+					// (function(){
+					// 	var avatars = document.getElementsByClassName("avatar");
+					// 	//console.log(avatars[0]);
+					// 	for(var i = 0,len = avatars.length;i<len;i++){
+					// 		var parent = avatars[i].parentNode;
+					// 		avatars[i].marginTop = (parent.height-avatars[i].height) / 2;
+					// console.log(avatars[i].parentNode.className);
+					// 	}
+					// })();
+				</script>
+			</div>
+			<div id="tab4" class="tabContent">
+				<span>电话：12345678910</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer">
+		<ul>
+			<li class="footerLi" id="footerLi1">
+				<i class="iconfont icon-huodong"></i>
+				<span class="footerText">活动概况</span>
+			</li>
+			<li class="footerLi" id="footerLi2">
+				<i class="iconfont icon-tubiaozhexiantu"></i>
+				<span class="footerText">数据分析</span>
+			</li >
+			<li class="footerLi" id="footerLi3">
+				<i class="iconfont icon-caiwu"></i>
+				<span class="footerText">财务报表</span>
+			</li>
+			<li class="footerLi" id="footerLi4">
+				<i class="iconfont icon-women"></i>
+				<span class="footerText">关于我们</span>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

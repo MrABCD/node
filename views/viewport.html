@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width,initial-scale=1.0" name="viewport">
+	<title>viewport</title>
+	<link rel="icon" href="/img/favicon.ico" mce_href="/img/favicon.ico" type=”image/x-icon”>
+	<style type="text/css">
+		#viewport{
+			width: 980px;
+			height: 600px;
+
+			background-color: red;
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="viewport"></div>
+	<script type="text/javascript">
+		console.log(window.screen.width,"--window.screen.width 理想视口");
+		
+		console.log(window.devicePixelRatio,"--window.devicePixelRatio 设备像素比 设备像素/css像素");
+		console.log(document.documentElement.clientWidth,"--document.documentElement.clientWidth 默认布局视口viewport大小");
+		console.log(window.innerWidth,"--window.innerWidth 视觉视口是用户正在看到的网站的区域");
+	</script>
+</body>
+</html>
